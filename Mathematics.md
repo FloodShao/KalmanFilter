@@ -1,7 +1,7 @@
 # Mathematics
 1. Radar measurements:
 
-![avatar](https://github.com/FloodShao/KalmanFilter/raw/master/fig/Radar%20Measurement.png)
+![](https://github.com/FloodShao/KalmanFilter/raw/master/fig/RadarMeasurement.png)
 
 As the graph shows, the radar can only measure the radial distance $\rho$ and radial velocity $\dot \rho$. As such the measurement transformation function from state (px, py, vx, py) to the radar measurement ($\rho$, $\phi$, $\dot \rho$) can be written as:
 
@@ -25,5 +25,15 @@ given that
 $$
 d(tan x) = \frac{1}{1+x^2}
 $$
+
+2. The selection of process covariance Q:
+
+There are two covariance matrix we need to estimate, one is **Process covariance matrix Q** the other is  **Measurement covariance R**. Generally, R can be obtained from the sensor calibration procedure. However, Q is not easy to obtained, because Q is often related to situations such as wheel slip. 
+
+In general, Q can be calculated as 
+$$
+	Q = G * G^T * \sigma^2
+$$
+where in a CV model, $G = [0.5dt^2, 0.5dt^2, dt, dt]$ and $\sigma^2$ indicates the influenced acceleration. In paper "Empirical Evaluation of Vehicular Models for Ego Motion Estimation " (2011), the 
 
 
